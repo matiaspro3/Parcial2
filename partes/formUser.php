@@ -6,17 +6,24 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
 	require_once("clases/AccesoDatos.php");
 	require_once("clases/User.php");
 
+
 	$arrayDeUser=usuarios::TraerTodoLosUsuarios();
  //}  // la saco de aca sino da error cuando no logueo
  ?>	
 <table class="table"  style=" background-color: transparent;">
 								
  	<?php 
+/*var_dump($_SESSION['usuariolala']);*/
 
-				if ($_SESSION['usuariolala']=="admin"){
+				$usuario= $_SESSION['user'];
+				$contraseña=$_SESSION['userPass'];
+				$tipo=$_SESSION['usuariolala'];
+
+
+				if ($tipo=="admin"){
 					    ?>
 
-							<a onclick="Alta()" class="btn btn-info">Alta </a>   <?php  //class="btn btn-success    verde ?>
+							<a onclick="AltaUser()" class="btn btn-info">Alta de Usuario </a>   <?php  //class="btn btn-success    verde ?>
 									   
 <thead>
 									<tr>
@@ -31,14 +38,26 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
 
 							foreach ($arrayDeUser as $user) {
 
-								if ($user->tipo == "admin")
-									{	echo"<tr>
+								if ($user->tipo == "admin" )
+									{	
+												if ($usuario==$user->email & $contraseña==$user->pass)
+ 													{
+										echo"<tr>
 										
 										<td><a onclick='ModificarUser($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>
 										<td>$user->email</td>
 										<td>$user->pass</td>
 										<td>$user->tipo</td>
-									</tr>   ";
+									</tr>   ";}
+
+												else {	echo"<tr>
+										<td><a onclick='' class='btn'>  </a></td>
+										<td>$user->email</td>
+										<td>$user->pass</td>
+										<td>$user->tipo</td>
+									</tr>   ";}
+
+
 								
 								}
 										else {
@@ -52,7 +71,7 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
 								   }			
 															}
 				}
-				elseif ($_SESSION['usuariolala']=="otro") { 
+				elseif ($tipo=="otro") { 
 				?>	
 									<tr>
 											<th>Accion</th><th>Nombre de Usuario</th><th>Contraseña</th>
@@ -65,7 +84,7 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
 							//if ($_SESSION['usuariolala']=="otro"){
 								foreach ($arrayDeUser as $user) {
 
-										if ($user->tipo == "otro")
+										if ($user->tipo == "otro" & $usuario==$user->email & $contraseña==$user->pass)
 							echo"<tr>
 										
 										<td><a onclick='ModificarUser($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>

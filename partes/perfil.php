@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="js/funcionesLogin.js"></script>
+<script type="text/javascript" src="js/funcionesUser.js"></script>
 <?php  /*
 		
 			<h4 class="widgettitle">Botones ABM</h4>

@@ -59,6 +59,67 @@ public function BorrarUser()
 
 	 }
 	
+	public function InsertarUser()
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into user (emai,pass,tipo)values(:email,:pass,:tipo)");
+				$consulta->bindValue(':email',$this->email, PDO::PARAM_STR);
+				$consulta->bindValue(':pass', $this->pass, PDO::PARAM_STR);
+				$consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);
+				$consulta->execute();		
+				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 }
+
+
+
+	 public function GuardarUser()
+	 {
+
+	 	if($this->id>0)
+	 		{
+	 			//$this->ModificarAlumnoParametros(); // no funciona con este metodo.
+	 			$this->ModificarUser();
+	 		}else {
+	 			$this->InsertarUser();
+	 		}
+
+	 }
+public static function TraerUnUser($id) 
+	{			
+
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select id,email, pass ,tipo from user where id = $id");
+			$consulta->execute();
+			$aluBuscado= $consulta->fetchObject('usuarios');
+
+			return $aluBuscado;				
+
+			
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

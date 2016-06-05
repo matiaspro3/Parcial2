@@ -47,7 +47,6 @@ function validarLogin()
 
 
 
-
 function deslogear()
 {	
 	var funcionAjax=$.ajax({
@@ -84,17 +83,7 @@ function MostrarPerfil()
 }
 
 
-function MostrarUser()
-{		//alert(queMostrar);
-	var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
-		data:{queHacer:"MostrarUser"}
-	});
-	funcionAjax.done(function(retorno){
-		$("#principal").html(retorno);
 
-		//$("#informe").html("Correcto BOTONES!!!");	
-	});
-}
+
+
 

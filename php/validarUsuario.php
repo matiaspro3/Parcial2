@@ -36,6 +36,8 @@ if( $fila!= NULL)
 {			
 		//if (Alumno::Traer)
 $_SESSION['usuariolala']=$fila->tipo;
+$_SESSION['user']=$fila->email;
+$_SESSION['userPass']=$fila->pass;
 	//var_dump()
 
 //$_SESSION['usuariolala']="admin";

@@ -5,7 +5,7 @@
     <div class="container">
 
       <form class="form-ingreso" onsubmit="GuardarAlumno();return false">
-        <h2 class="form-ingreso-heading">Lista de Alumnos</h2>
+        <h2 class="form-ingreso-heading">Datos del Alumno</h2>
 
         <label for="nombre" class="sr-only">Nombre</label>
         <input type="text"  minlength="4"  id="nombre" title="Se necesita un nombre de Alumno" class="form-control" placeholder="Nombre" required="" autofocus="">

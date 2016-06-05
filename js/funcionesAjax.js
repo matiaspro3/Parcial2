@@ -1,3 +1,4 @@
+
 function MostrarInicio()
 {
 		//alert(queMostrar);

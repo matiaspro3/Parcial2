@@ -1,6 +1,6 @@
 <?php 
 require_once("clases/AccesoDatos.php");
-require_once("clases/cd.php");
+require_once("clases/User.php");
 require_once("clases/Alumno.php");
 
 $queHago=$_POST['queHacer'];
@@ -32,6 +32,11 @@ switch ($queHago) {
 			//include("partes/formCd.php");
 			include("partes/formAlumno.php");
 		break;
+	case 'MostrarFormAltaUser':
+			//include("partes/formCd.php");
+			include("partes/formUserAlta.php");
+		break;
+	
 	/*case 'BorrarCD':
 			$cd = new cd();
 			$cd->id=$_POST['id'];
@@ -68,7 +73,7 @@ switch ($queHago) {
 
 
 		break;
-case 'GuardarAlumno':
+    case 'GuardarAlumno':
 			$alu = new Alumno();
 			$alu->id=$_POST['id'];
 			$alu->nombre=$_POST['nombre'];
@@ -79,14 +84,52 @@ case 'GuardarAlumno':
 
 		break;
 
-case 'Alta':
+    case 'Alta':
 			$alu = new Alumno();
 			$alu->id=0;
 			echo json_encode($alu);
 			
 
+		break;/*
+
+
+
+
+
+
+		*/
+	case 'BorrarUser':
+			$user = new usuarios();
+			$user->id=$_POST['id'];
+			$cantidad=$user->BorrarUser();
+			echo $cantidad;
+
+		break;
+	case 'ModificarUser':
+				$user = usuarios::TraerUnUser($_POST['id']);		
+			echo json_encode($user);
+
+
+
+		break;
+    case 'GuardarUser':
+			$user = new usuarios();
+			$user->id=$_POST['id'];
+			$user->nombre=$_POST['email'];
+			$user->legajo=$_POST['pass'];
+			$user->sexo=$_POST['tipo'];
+			$cantidad=$user->GuardarUser();
+			echo $cantidad;
+
 		break;
 
+    case 'Alta':
+			$user = new usuarios();
+			$user->id=0;
+			echo json_encode($user);
+			
+
+		break;
 	default:
 		# code...
 		break;

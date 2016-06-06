@@ -53,7 +53,7 @@ public function BorrarUser()
 				update user 
 				set email='$this->email',
 				pass='$this->pass',
-				tipo='$this->sexo'
+				tipo='$this->tipo'
 				WHERE id='$this->id'");
 			return $consulta->execute();
 
@@ -62,7 +62,7 @@ public function BorrarUser()
 	public function InsertarUser()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into user (emai,pass,tipo)values(:email,:pass,:tipo)");
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into user (email,pass,tipo)values(:email,:pass,:tipo)");
 				$consulta->bindValue(':email',$this->email, PDO::PARAM_STR);
 				$consulta->bindValue(':pass', $this->pass, PDO::PARAM_STR);
 				$consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);

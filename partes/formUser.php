@@ -44,7 +44,7 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
  													{
 										echo"<tr>
 										
-										<td><a onclick='ModificarUser($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>
+										<td><a onclick='VerUserAmodidificar($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>
 										<td>$user->email</td>
 										<td>$user->pass</td>
 										<td>$user->tipo</td>
@@ -87,7 +87,7 @@ if (isset($_SESSION['usuariolala']))   //pregunto si esta logueado(no importa qu
 										if ($user->tipo == "otro" & $usuario==$user->email & $contraseña==$user->pass)
 							echo"<tr>
 										
-										<td><a onclick='ModificarUser($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>
+										<td><a onclick='VerUserAmodidificar($user->id)' class='btn btn-warning'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Editar</a></td>
 										<td>$user->email</td>
 										<td>$user->pass</td>
 											

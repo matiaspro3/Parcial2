@@ -1,3 +1,4 @@
+
 function MostrarUser()
 {		//alert(queMostrar);
 	var funcionAjax=$.ajax({
@@ -29,12 +30,14 @@ function ModificarUser(idParametro)
 	funcionAjax.done(function(retorno){
 		//alert(retorno);
 		var alu =JSON.parse(retorno);
-			//MostrarAlta(alu); 
+			//MostrarAltaUser(alu); 
 			//alert(alu.email);
 		$("#idalu").val(alu.id);
 		$("#email").val(alu.email);
 		$("#pass").val(alu.pass);
 		$("#tipo").val(alu.tipo);
+		
+		
 	});
 	funcionAjax.fail(function(retorno){	
 	//	$("#informe").html(retorno.responseText);	
@@ -63,7 +66,7 @@ function BorrarUser(idParametro)
 	});
 	funcionAjax.done(function(retorno){
 		//Mostrar("MostrarGrilla");
-		MostrarGrilla();
+		MostrarUser();
 	//	$("#informe").html("cantidad de eliminados "+ retorno);	
 		
 	});
@@ -95,6 +98,37 @@ function AltaUser(){
 	});
 }
 
+function VerUserAmodidificar(usuario)
+{
+		//alert(queMostrar);
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostrarFormAltaUser"}
+	});
+	funcionAjax.done(function(retorno){
+		$("#principal").html(retorno);
+		ModificarUser(usuario);
+		//$("#informe").html("Correcto!!!");	
+		
+
+	});
+	funcionAjax.fail(function(retorno){
+		$("#principal").html(":(");
+		//$("#informe").html(retorno.responseText);	
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
+}
+
+
+
+
+
+
+
 function GuardarUser()
 {
 		var id=$("#idalu").val();
@@ -120,8 +154,7 @@ function GuardarUser()
 		//alert(retorno.email);
 		//	Mostrar("MostrarGrilla");
 		MostrarUser();
-		$("#informe").html("cantidad de agregados "+ retorno);	
-		
+					
 	});
 	funcionAjax.fail(function(retorno){	
 	//	$("#informe").html(retorno.responseText);	

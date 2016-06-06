@@ -115,9 +115,14 @@ switch ($queHago) {
     case 'GuardarUser':
 			$user = new usuarios();
 			$user->id=$_POST['id'];
-			$user->nombre=$_POST['email'];
-			$user->legajo=$_POST['pass'];
-			$user->sexo=$_POST['tipo'];
+			$user->email=$_POST['email'];
+			$user->pass=$_POST['pass'];
+
+			if ( isset($_POST['tipo'])){
+					$user->tipo=$_POST['tipo'];
+							
+				}else $user->tipo="otro";
+	
 			$cantidad=$user->GuardarUser();
 			echo $cantidad;
 
